@@ -4,7 +4,17 @@
 ## makeCacheMatrix function creates a special "matrix" object that can cache its inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
-
+    cache <- NULL
+    set <- function(y) {
+        x <<- y
+        cache <<- NULL
+    }
+    get <- function() x
+    setInverse <- function(inverse) cache <<- inverse
+    getInverse <- function() cache
+    list(set = set, get = get,
+         setInverse = setInverse,
+         getInverse = getInverse)
 }
 
 
